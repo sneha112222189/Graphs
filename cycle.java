@@ -1,6 +1,6 @@
 import java.util.*;
 
-// undirected graph
+// BFS
 
 class Solution1{
     class Pair{
@@ -47,7 +47,7 @@ boolean bfs(int V,int src,ArrayList<ArrayList<Integer>> adj,boolean[] vis){
 }
 }
 
-// directed graph
+// DFS
 
 class Solution2{
     boolean isCycle(int V,ArrayList<ArrayList<Integer>> adj){
