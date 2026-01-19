@@ -14,6 +14,8 @@ class bipartite {
         }
     }
 
+    //BFS for a Bipartite Graph
+
     boolean bfs(List<List<Integer>> adj,int[] color,int i){
         Queue<Integer> q = new LinkedList<>();
         q.add(i);
@@ -30,6 +32,23 @@ class bipartite {
                 else if(color[neighbour] == color[node]){
                     return false;
                 }
+            }
+        }
+        return true;
+    }
+
+    //DFS for a Bipartite graph
+
+    boolean dfs(List<List<Integer>> adj,int[] color,int start){
+        color[start]=0;
+
+        for(int neighbour : adj.get(start)){
+            if(color[neighbour] == -1){
+                color[neighbour] = 1 - color[start];
+                dfs(adj,color,neighbour);
+            }
+            else if(color[start] == color[neighbour]){
+                return false;
             }
         }
         return true;
