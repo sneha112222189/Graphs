@@ -1,7 +1,5 @@
 import java.util.*;
-
-// BFS
-
+//Undirected graph
 class Solution1{
     class Pair{
         int first;
@@ -21,8 +19,7 @@ boolean isCycle(int V,ArrayList<ArrayList<Integer>> adj){
     }
     return false;
 }
-
-
+// BFS
 boolean bfs(int V,int src,ArrayList<ArrayList<Integer>> adj,boolean[] vis){
     Queue<Pair> q = new LinkedList<>();
     q.add(new Pair(src,-1));
@@ -48,7 +45,6 @@ boolean bfs(int V,int src,ArrayList<ArrayList<Integer>> adj,boolean[] vis){
 }
 
 // DFS
-
 class Solution2{
     boolean isCycle(int V,ArrayList<ArrayList<Integer>> adj){
         boolean[] vis = new boolean[V];
@@ -73,3 +69,42 @@ class Solution2{
         return false;
     }
 }
+
+//Directed Graph
+class Solution3{
+
+    boolean isCycleD(int V,List<List<Integer>> adj){
+        int[] vis = new int[V];
+        int[] pathVis= new int[V];
+
+        for(int i=0;i<V;i++){
+            if(vis[i]==0){
+            if(dfs(i,pathVis,vis,adj)) return true;
+            }
+        }
+        return false;
+    }
+
+    boolean dfs(int start,int[] pathVis,int[] vis,List<List<Integer>> adj){
+        vis[start]=1;
+        pathVis[start]=1;
+
+        for(int n : adj.get(start)){
+            if(vis[start]==0){
+                vis[start]=1;
+                if(dfs(n,pathVis,vis,adj)) return true;
+            }
+            else if(pathVis[n]==1){
+                return true;
+            }
+        }
+        pathVis[start]=0;
+        return false;
+    }
+}
+
+
+
+
+
+    
