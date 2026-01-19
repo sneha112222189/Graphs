@@ -39,13 +39,13 @@ class bipartite {
 
     //DFS for a Bipartite graph
 
-    boolean dfs(List<List<Integer>> adj,int[] color,int start){
-        color[start]=0;
+    boolean dfs(List<List<Integer>> adj,int col,int[] color,int start){
+        color[start]=col;
 
         for(int neighbour : adj.get(start)){
             if(color[neighbour] == -1){
                 color[neighbour] = 1 - color[start];
-                dfs(adj,color,neighbour);
+                if(!dfs(adj,col,color,neighbour)) return false;
             }
             else if(color[start] == color[neighbour]){
                 return false;
