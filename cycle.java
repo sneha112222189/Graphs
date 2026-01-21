@@ -105,6 +105,58 @@ class Solution3{
     }
 }
 
+//BFS
+class Solution4{
+    public boolean isCyclic(int V, int[][] edges) {
+        List<List<Integer>> adj = new ArrayList<>();
+        int[] indegree = new int[V];
+        Arrays.fill(indegree,0);
+        
+        for(int i=0;i<V;i++){
+            adj.add(new ArrayList<>());
+        }
+        
+        for(int[] i : edges){
+            int u = i[0];
+            int v = i[1];
+            adj.get(u).add(v);
+            indegree[v]++;
+           
+        }
+        
+        int[] vis = new int[V];
+        Arrays.fill(vis,0);
+        Queue<Integer> q = new LinkedList<>();
+        
+        for(int i=0;i<V;i++){
+            if(indegree[i]==0){
+                q.add(i);
+            }
+        }
+        
+        //vis[start]=1;
+        while(!q.isEmpty()){
+            int node = q.poll();
+            
+            for(int nei : adj.get(node)){
+                indegree[nei]--;
+                if(vis[nei] ==0 && indegree[nei]==0){
+                    vis[nei]=1;
+                    q.add(nei);
+                }
+            }
+        }
+        int count=0;
+        for(int i=0;i<V;i++){
+            if(indegree[i]!=0){
+                count++;
+            }
+        }
+        if(count==0) return false;
+        return true;
+    }
+}
+
 
 
 
