@@ -92,8 +92,8 @@ class Solution3{
         pathVis[start]=1;
 
         for(int n : adj.get(start)){
-            if(vis[start]==0){
-                vis[start]=1;
+            if(vis[n]==0){
+                vis[n]=1;
                 if(dfs(n,pathVis,vis,adj)) return true;
             }
             else if(pathVis[n]==1){
