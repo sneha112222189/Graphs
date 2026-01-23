@@ -1,7 +1,7 @@
 import java.util.*;
 
 class Solution {
-    public int findShortestCycle(int n, int[][] edges) {
+    public void findShortestCycle(int n, int[][] edges) {
         List<List<Integer>> adj = new ArrayList<>();
 
         for(int i=0;i<n;i++){
@@ -19,11 +19,11 @@ class Solution {
         int ans = Integer.MAX_VALUE;
 
         for(int i=0;i<n;i++){
-            ans = Math.min(ans,bfs(adj,vis,i));
+            //ans = Math.min(ans,bfs(adj,vis,i));
         }
     }
 
-    int bfs(List<List<Integer>> adj,boolean[] vis,int start){
+    void bfs(List<List<Integer>> adj,boolean[] vis,int start){
         int[] parent= new int[vis.length];
         Arrays.fill(parent,-1);
         vis[start]=true;
@@ -32,9 +32,9 @@ class Solution {
             if(parent[nei]==-1){
                 vis[nei]=true;
                 parent[nei] = 1;
-                dfs(adj,vis,start);
+                bfs(adj,vis,start);
             }
-            else if(parent[nei] != start)
+            else if(parent[nei] != start);
         }
     }
 }
