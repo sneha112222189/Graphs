@@ -11,7 +11,7 @@ class Graph {
             adj.add(new ArrayList<>());
         }
     }
-
+    //ADD EDGES FUNCTION
     void addEdge(int u,int v){
         adj.get(u).add(v);
         adj.get(v).add(u);
