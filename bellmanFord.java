@@ -24,7 +24,7 @@ class Solution {
             int v = edge[1];
             int w = edge[2];
 
-            if(dist[u]=Integer.MAX_VALUE) continue;
+            if(dist[u]==Integer.MAX_VALUE) continue;
             if( dist[u]+w<dist[v]){
                 return new int[]{-1};
             }
